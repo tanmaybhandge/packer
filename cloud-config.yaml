@@ -1,0 +1,8 @@
+users:
+  - name: centos
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+chpasswd:
+  list: |
+    centos:packer
+  expire: False
+ssh_pwauth: True
