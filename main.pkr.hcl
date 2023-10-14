@@ -14,12 +14,9 @@ source "nutanix" "demo_image" {
   ssh_username      = "centos"  # User for SSH connection initiated by Packer
   ssh_password      = "packer"  # Password for the SSH user
   nutanix_insecure  = true # Authorize connection to Prism Central without valid certificate
-  vm_name           = "packer-vm" # Name of the temporary VM to create
-
   user_data = base64encode(file("cloud-config.yaml"))
 
   # Configure VM disks
-
   vm_disks {
     image_type       = "DISK_IMAGE"  # Create disk from Nutanix image library
     source_image_uri = "https://yum.oracle.com/templates/OracleLinux/OL9/u2/x86_64/OL9U2_x86_64-kvm-b197.qcow"  # Name of the image used as disk source
@@ -28,7 +25,6 @@ source "nutanix" "demo_image" {
     vm_nics {
     subnet_name = "VLAN23"
   }
-
 }
 
 variables {
